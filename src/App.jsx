@@ -15,9 +15,9 @@ function App() {
         <div className='p-2 text-center'>
           Ốc Tìm Nhà là nơi để gia đình chia sẻ những câu chuyện quý giá cùng nhau
         </div>
-        <button className="btn btn-white btn-lg rounded-xl shadow-lg gap-2 flex items-center text-black">
+        <button className="btn bg-white text-black border border-gray-300 btn-lg rounded-xl shadow-lg gap-2 flex items-center">
           Trải Nghiệm
-          <span className="text-black">
+          <span className='text-black'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
             </svg>
