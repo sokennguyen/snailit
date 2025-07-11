@@ -54,15 +54,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/*
-  .full-mobile-screen uses the --vh variable set by the script in index.html.
-  This ensures the element fits the visible viewport height on mobile devices,
-  avoiding issues with h-screen/100vh when the browser's search bar is visible.
-*/
-.full-mobile-screen {
-  height: calc(var(--vh, 1vh) * 100);
-}
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
