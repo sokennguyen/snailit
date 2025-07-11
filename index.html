@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React</title>
   </head>
+  <!--
+      This script sets a CSS variable --vh to 1% of the current viewport height.
+      It updates on resize, so you can use it in CSS to make elements fit the visible area on mobile browsers.
+      This avoids issues with h-screen/100vh over-accounting for the search/address bar on mobile.
+    -->
+  <script>
+    function setVh() {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    }
+    setVh();
+    window.addEventListener('resize', setVh);
+  </script>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

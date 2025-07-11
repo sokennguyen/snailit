@@ -4,8 +4,10 @@ import logoIntro from './assets/logo-intro.svg';
 
 function App() {
 
+  // Use 'full-mobile-screen' instead of 'h-screen' to ensure the app fits the visible viewport on mobile devices.
+  // This avoids content being hidden behind the browser's search/address bar.
   return (
-    <div className='flex flex-col items-center justify-center bg-blue-900 h-screen w-screen'>
+    <div className="flex flex-col items-center justify-center bg-blue-900 full-mobile-screen w-screen">
       <div className='hidden sm:flex font-bold text-4xl justify-center text-white'>
         Haven't developed yet for desktop,
         works best on mobile
@@ -15,7 +17,7 @@ function App() {
         <div className='p-2 text-center'>
           Ốc Tìm Nhà là nơi để gia đình chia sẻ những câu chuyện quý giá cùng nhau
         </div>
-        <button className="btn btn-primary btn-lg rounded-xl shadow-lg gap-2 flex items-center text-black">
+        <button className="btn btn-white btn-lg rounded-xl shadow-lg gap-2 flex items-center text-black">
           Trải Nghiệm
           <span className="text-black">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
