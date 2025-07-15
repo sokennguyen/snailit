@@ -100,7 +100,7 @@ function Showcase() {
         </span>
       </header>
       <div className='text-white font-bold text-4xl'>Bài Đăng</div>
-      <div id='post-container' className='flex flex-col w-full items-center gap-6'>
+      <div id='post-container' className='!text-black flex flex-col w-full items-center gap-6'>
         <Post
           title='Khoảng khắc của con, kỉ niệm của ba mẹ'
           date='01/07/2025'
