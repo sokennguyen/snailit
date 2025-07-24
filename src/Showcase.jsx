@@ -90,35 +90,109 @@ function Post({ title, date, image, content, open, setOpen }) {
 function Showcase() {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
+  // Email form state
+  const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
+
+  function validateEmail(email) {
+    // Simple email regex
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function handleEmailSubmit() {
+    if (!validateEmail(email)) {
+      setEmailError('Email không hợp lệ.');
+    } else {
+      setEmailError('');
+      // TODO: handle valid email submission (e.g., send to server)
+      alert('Đăng ký thành công!');
+      setEmail('');
+    }
+  }
 
   return (
-    <div className='flex flex-col items-center justify-start bg-blue-900 h-screen w-screen space-y-4 p-3 overflow-auto'>
-      <header className='flex flex-row items-center justify-between w-full max-w-md px-2 py-3 text-white'>
-        <img src={logoApp} alt='App Logo' className='h-10 w-10' />
-        <span>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
-        </span>
-      </header>
-      <div className='text-white font-bold text-4xl'>Bài Đăng</div>
-      <div id='post-container' className='!text-black flex flex-col w-full items-center gap-6'>
-        <Post
-          title='Khoảng khắc của con, kỉ niệm của ba mẹ'
-          date='01/07/2025'
-          image={firstImage}
-          content={postContent1}
-          open={open1}
-          setOpen={setOpen1}
-        />
-        <Post
-          title='Kỉ niệm ngày đầu tiên đi học'
-          date='02/07/2025'
-          image={secondImage}
-          content={postContent2}
-          open={open2}
-          setOpen={setOpen2}
-        />
+    <>
+      <div className='flex flex-col items-center justify-start bg-blue-900 w-screen space-y-4 p-3 overflow-auto'>
+        <header className='flex flex-row items-center justify-between w-full max-w-md px-2 py-3 text-white'>
+          <img src={logoApp} alt='App Logo' className='h-10 w-10' />
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
+          </span>
+        </header>
+        <div className='text-white font-bold text-4xl'>Bài Đăng</div>
+        <div id='post-container' className='!text-black flex flex-col w-full items-center gap-6 mb-8'>
+          <Post
+            title='Khoảng khắc của con, kỉ niệm của ba mẹ'
+            date='01/07/2025'
+            image={firstImage}
+            content={postContent1}
+            open={open1}
+            setOpen={setOpen1}
+          />
+          <Post
+            title='Kỉ niệm ngày đầu tiên đi học'
+            date='02/07/2025'
+            image={secondImage}
+            content={postContent2}
+            open={open2}
+            setOpen={setOpen2}
+          />
+        </div>
       </div>
-    </div>
+      {/* CTA Section */}
+        <div className='h-120 w-full max-w-md p-6 bg-customRed shadow-lg flex flex-col justify-center items-center text-center'>
+          <div className='text-4xl font-bold mb-8 text-white'>Lưu giữ những câu chuyện, cùng nhau</div>
+          <div className='w-80 text-base text-white mb-6'>Đừng để những nỗi lòng trôi vào quên lãng. Đăng ký để nhận được thông tin phát triển của Ốc Tìm Nhà</div>
+          <form className='w-full flex justify-center' onSubmit={e => { e.preventDefault(); handleEmailSubmit(); }}>
+            <div className='w-full max-w-xs flex flex-col'>
+              <div className='flex items-center bg-black rounded-full px-1 py-1 w-full'>
+                <input
+                  type='email'
+                  placeholder='emailcuaban@mail.com'
+                  className='bg-gray-100 text-gray-500 rounded-l-full px-4 py-2 w-full outline-none border-none placeholder-gray-500'
+                  style={{ fontFamily: 'inherit' }}
+                  value={email}
+                  onChange={e => { setEmail(e.target.value); setEmailError(''); }}
+                />
+                <div
+                  className='bg-black rounded-r-full px-6 py-2 flex items-center justify-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-white'
+                  tabIndex={0}
+                  role='button'
+                  aria-label='Gửi email'
+                  onClick={handleEmailSubmit}
+                  onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { handleEmailSubmit(); } }}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </div>
+              </div>
+              <div style={{ minHeight: '40px' }}>
+                {emailError ? (
+                  <div className="flex items-center gap-2 bg-red-100 text-red-700 rounded-md px-3 py-2 mt-2 w-full text-sm shadow">
+                    <svg className="h-4 w-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M12 5a7 7 0 110 14a7 7 0 010-14z" />
+                    </svg>
+                    {emailError}
+                  </div>
+                ) : (
+                  <div className="py-2 mt-2" />
+                )}
+              </div>
+            </div>
+          </form>
+      </div>
+      {/* Footer Section */}
+      <footer className='w-full flex justify-center bg-blue-950 bg-opacity-90'>
+        <div className='w-full max-w-md py-4 flex flex-col items-center text-center text-white text-sm'>
+          <div className='mb-1'>&copy; {new Date().getFullYear()} Snailit. All rights reserved.</div>
+          <div className='flex gap-4'>
+            <a href='#' className='underline hover:text-yellow-200 transition'>Liên hệ</a>
+            <a href='#' className='underline hover:text-yellow-200 transition'>Chính sách bảo mật</a>
+          </div>
+        </div>
+      </footer>
+    </>
   );
 }
 
