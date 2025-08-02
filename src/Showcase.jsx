@@ -143,7 +143,7 @@ function Showcase() {
         <div className='h-120 w-full max-w-md p-6 bg-customRed shadow-lg flex flex-col justify-center items-center text-center'>
           <div className='text-4xl font-bold mb-8 text-white'>Lưu giữ những câu chuyện, cùng nhau</div>
           <div className='w-80 text-base text-white mb-6'>Đừng để những nỗi lòng trôi vào quên lãng. Đăng ký để nhận được thông tin phát triển của Ốc Tìm Nhà</div>
-          <form className='w-full flex justify-center' onSubmit={e => { e.preventDefault(); handleEmailSubmit(); }}>
+          <form className='w-full flex justify-center' onSubmit={e => { e.preventDefault(); handleEmailSubmit(); }} netlify>
             <div className='w-full max-w-xs flex flex-col'>
               <div className='flex items-center bg-black rounded-full px-1 py-1 w-full'>
                 <input
