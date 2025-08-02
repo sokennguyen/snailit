@@ -100,18 +100,34 @@ function Showcase() {
   }
 
   function handleEmailSubmit(e) {
-    if (e) e.preventDefault();
+    e.preventDefault();
     
     if (!validateEmail(email)) {
       setEmailError('Email không hợp lệ.');
-      return false;
-    } else {
-      setEmailError('');
-      // Show success message
+      return;
+    }
+    
+    setEmailError('');
+    
+    // Create form data for Netlify submission
+    const formData = new FormData();
+    formData.append('form-name', 'contact');
+    formData.append('email', email);
+    
+    // Submit to Netlify
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    })
+    .then(() => {
       alert('Đăng ký thành công!');
       setEmail('');
-      return true; // Allow form submission to proceed
-    }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      alert('Có lỗi xảy ra. Vui lòng thử lại.');
+    });
   }
 
   return (
@@ -147,8 +163,13 @@ function Showcase() {
         <div className='h-120 w-full max-w-md p-6 bg-customRed shadow-lg flex flex-col justify-center items-center text-center'>
           <div className='text-4xl font-bold mb-8 text-white'>Lưu giữ những câu chuyện, cùng nhau</div>
           <div className='w-80 text-base text-white mb-6'>Đừng để những nỗi lòng trôi vào quên lãng. Đăng ký để nhận được thông tin phát triển của Ốc Tìm Nhà</div>
-          <form name="contact" data-netlify='true' method="POST" className='w-full flex justify-center' onSubmit={handleEmailSubmit} >
+          <form name="contact" data-netlify='true' data-netlify-honeypot="bot-field" method="POST" className='w-full flex justify-center' onSubmit={handleEmailSubmit} >
             <input type="hidden" name="form-name" value="contact" />
+            <p className="hidden">
+              <label>
+                Don't fill this out if you're human: <input name="bot-field" />
+              </label>
+            </p>
             <div className='w-full max-w-xs flex flex-col'>
               <div className='flex items-center bg-black rounded-full px-1 py-1 w-full'>
                 <input
