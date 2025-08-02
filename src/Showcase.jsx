@@ -99,14 +99,18 @@ function Showcase() {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
-  function handleEmailSubmit() {
+  function handleEmailSubmit(e) {
+    if (e) e.preventDefault();
+    
     if (!validateEmail(email)) {
       setEmailError('Email không hợp lệ.');
+      return false;
     } else {
       setEmailError('');
-      // TODO: handle valid email submission (e.g., send to server)
+      // Show success message
       alert('Đăng ký thành công!');
       setEmail('');
+      return true; // Allow form submission to proceed
     }
   }
 
@@ -143,11 +147,13 @@ function Showcase() {
         <div className='h-120 w-full max-w-md p-6 bg-customRed shadow-lg flex flex-col justify-center items-center text-center'>
           <div className='text-4xl font-bold mb-8 text-white'>Lưu giữ những câu chuyện, cùng nhau</div>
           <div className='w-80 text-base text-white mb-6'>Đừng để những nỗi lòng trôi vào quên lãng. Đăng ký để nhận được thông tin phát triển của Ốc Tìm Nhà</div>
-          <form data-netlify='true' method="POST" className='w-full flex justify-center' onSubmit={e => { e.preventDefault(); handleEmailSubmit(); }} >
+          <form name="contact" data-netlify='true' method="POST" className='w-full flex justify-center' onSubmit={handleEmailSubmit} >
+            <input type="hidden" name="form-name" value="contact" />
             <div className='w-full max-w-xs flex flex-col'>
               <div className='flex items-center bg-black rounded-full px-1 py-1 w-full'>
                 <input
                   type='email'
+                  name='email'
                   placeholder='emailcuaban@mail.com'
                   className='bg-gray-100 text-gray-500 rounded-l-full px-4 py-2 w-full outline-none border-none placeholder-gray-500'
                   style={{ fontFamily: 'inherit' }}
