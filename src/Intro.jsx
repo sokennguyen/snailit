@@ -6,9 +6,12 @@ function Intro() {
   const navigate = useNavigate();
   return (
     <div className='flex flex-col items-center justify-center bg-blue-900 h-screen w-screen'>
-      <div className='hidden sm:flex font-bold text-4xl justify-center text-white'>
-        Haven't developed yet for desktop,
-        works best on mobile
+      <div className='hidden sm:flex flex-col items-center justify-center text-white'>
+        <img src={logoIntro} alt="Intro Logo" className="w-56 h-56 mb-8" />
+        <div className='font-bold text-4xl text-center'>
+          Chưa ra mắt trên desktop,
+          hoạt động tốt nhất trên mobile
+        </div>
       </div>
       <div className='flex flex-col sm:hidden font-light text-xl items-center text-white space-y-4'>
         <img src={logoIntro} alt="Intro Logo" className="w-56 h-56 " />
