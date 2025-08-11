@@ -1,4 +1,4 @@
-# Snailit
+# SnailNest
 
 A simple React + Vite + Tailwind + daisyUI project.
 
