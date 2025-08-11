@@ -240,10 +240,7 @@ function Showcase() {
                 onClick={() => setComposeOpen(false)}
               >
                 <span className="sr-only">Close</span>
-                <span className="relative block w-4 h-4" aria-hidden="true">
-                  <span className="absolute left-0 top-1/2 w-full h-px -translate-y-1/2 rotate-45 bg-black transform"></span>
-                  <span className="absolute left-0 top-1/2 w-full h-px -translate-y-1/2 -rotate-45 bg-black transform"></span>
-                </span>
+                <span className="text-black text-base leading-none" aria-hidden="true">x</span>
               </button>
             </div>
             {/* Author */}
