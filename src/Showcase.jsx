@@ -435,17 +435,23 @@ function Showcase() {
       <footer className='w-full flex justify-center bg-blue-950'>
         <div className='w-full max-w-md px-4 py-6 text-white border-t border-white/10'>
           <div className='flex items-center justify-between'>
-            <div className='flex items-center gap-2'>
-              <img src={logoApp} alt='SnailNest logo' className='h-6 w-6' width={24} height={24} loading="lazy" decoding="async" fetchPriority="low" />
-              <span className='font-semibold'>SnailNest</span>
+            <div className='flex flex-col '>
+              <div className='flex items-center gap-2'>
+                <img src={logoApp} alt='SnailNest logo' className='h-6 w-6' width={24} height={24} loading="lazy" decoding="async" fetchPriority="low" />
+                <span className='font-semibold text-2xl'>SnailNest</span>
+              </div>
+              <div className='mt-3 text-center text-xs text-white/70'>
+                &copy; {new Date().getFullYear()} SnailNest. All rights reserved.
+              </div>
             </div>
-            <nav className='flex items-center gap-4 text-sm'>
-              <span className='select-text'>Liên hệ: kien@snailnest.com</span>
+            <nav className='flex flex-col items-center gap-2 text-sm'>
               <Link to='/privacy' className='underline hover:text-yellow-200 transition'>Chính sách bảo mật</Link>
+              <div className='flex flex-col items-center '>
+                <div className=''>Liên hệ</div>
+                <span className='select-text'>kien@snailnest.com</span>
+                <span className='select-text'>chi@snailnest.com</span>
+              </div>
             </nav>
-          </div>
-          <div className='mt-3 text-center text-xs text-white/70'>
-            &copy; {new Date().getFullYear()} SnailNest. All rights reserved.
           </div>
         </div>
       </footer>
