@@ -440,10 +440,7 @@ function Showcase() {
               <span className='font-semibold'>SnailNest</span>
             </div>
             <nav className='flex items-center gap-4 text-sm'>
-              <div className='flex flex-col items-center leading-tight'>
-                <span className='font-medium'>Liên hệ</span>
-                <span className='text-xs text-white/80 select-text'>kien@snailnest.com</span>
-              </div>
+              <span className='select-text'>Liên hệ: kien@snailnest.com</span>
               <Link to='/privacy' className='underline hover:text-yellow-200 transition'>Chính sách bảo mật</Link>
             </nav>
           </div>
